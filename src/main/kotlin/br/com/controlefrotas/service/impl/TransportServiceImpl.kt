@@ -1,5 +1,6 @@
 package br.com.controlefrotas.service.impl
 
+import br.com.controlefrotas.dto.*
 import br.com.controlefrotas.entities.Transport
 import br.com.controlefrotas.repository.RegistrationDataRepository
 import br.com.controlefrotas.repository.TransportRepository
@@ -29,7 +30,7 @@ class TransportServiceImpl(
         return repository.findByIdentificacaoAndDtAlteracaoBetween(identificacao, dthIni, dthEnd).size;
     }
 
-    override fun listPerDayYear(identificacao: String, year: Int): SortedMap<LocalDate, Int> {
+    override fun listPerDayYear(identificacao: String, year: Int): ArrayList<PerDayInYear> {
         val hashPerDay : HashMap<LocalDate, Int> = hashMapOf();
         val dthIni = LocalDateTime.of(year, 1,1, 0, 0, 1);
         val dthEnd = LocalDateTime.of(year, 12, 31, 23, 59, 59);
@@ -62,12 +63,17 @@ class TransportServiceImpl(
                 hashPerDay.put(dt, VALOR_INICIAL);
             }
         };
-        return hashPerDay.toSortedMap();
+        var listPerDayInYear: ArrayList<PerDayInYear> = arrayListOf();
+        hashPerDay.toSortedMap().forEach { (key, value) ->
+            var perDayInYear = PerDayInYear(formatters.format(key), value);
+            listPerDayInYear.add(perDayInYear);
+        }
+        return listPerDayInYear;
     }
 
     override fun listPerDayWeek(
         identificacao: String
-    ): SortedMap<Int, Int> {
+    ): ArrayList<PerDayWeek> {
         val hashPerWeek : HashMap<Int, Int> = hashMapOf();
         hashPerWeek.put(DayOfWeek.MONDAY.value, SEM_VALOR);
         hashPerWeek.put(DayOfWeek.TUESDAY.value, SEM_VALOR);
@@ -88,12 +94,17 @@ class TransportServiceImpl(
                 hashPerWeek.put(nameWeekFormatted, VALOR_INICIAL);
             }
         };
-        return hashPerWeek.toSortedMap();
+        var listPerDayWeek: ArrayList<PerDayWeek> = arrayListOf();
+        hashPerWeek.toSortedMap().forEach { (key, value) ->
+            var perDayInYear = PerDayWeek(key.toString(), value);
+            listPerDayWeek.add(perDayInYear);
+        }
+        return listPerDayWeek;
     }
 
     override fun listPerMonthAndGroupedPerYear(
         identificacao: String
-    ): SortedMap<Int, SortedMap<Int, Int>> {
+    ): ArrayList<PerMonthByYear> {
         val hashPerYear : HashMap<Int, HashMap<Int, Int>> = hashMapOf();
         val transport = this.repositoryRegistration.findByIdentificacao(identificacao);
         val dtBegin = transport.dtInicioAtuacao;
@@ -138,12 +149,20 @@ class TransportServiceImpl(
         for (yearHash in hashPerYear.toSortedMap()) {
             sortedMapPerYear.put(yearHash.key, yearHash.value.toSortedMap());
         }
-        return sortedMapPerYear;
+        var listPerYear: ArrayList<PerMonthByYear> = arrayListOf();
+        sortedMapPerYear.toSortedMap().forEach { (key, sortedMapPerMonth) ->
+            var listPerMonth: ArrayList<PerMonth> = arrayListOf();
+            sortedMapPerMonth.forEach { (key, qtn) ->
+                listPerMonth.add(PerMonth(key.toString(), qtn));
+            }
+            listPerYear.add(PerMonthByYear(listPerMonth, key.toString()));
+        }
+        return listPerYear;
     }
 
     override fun listPerDayWeekAndGroupedPerYearAndMonth(
         identificacao: String
-    ): SortedMap<Int, SortedMap<Int, SortedMap<Int, Int>>> {
+    ): ArrayList<PerDayWeekByMonthAndYear> {
         val hashPerYear : HashMap<Int, HashMap<Int, HashMap<Int, Int>>> = hashMapOf();
         val transport = this.repositoryRegistration.findByIdentificacao(identificacao);
         val dtBegin = transport.dtInicioAtuacao;
@@ -216,6 +235,20 @@ class TransportServiceImpl(
             }
             sortedMapPerYear.put(yearHash.key, sortedMapPerMonth);
         }
-        return sortedMapPerYear;
+        var listPerYear: ArrayList<PerDayWeekByMonthAndYear> = arrayListOf();
+        sortedMapPerYear.toSortedMap().forEach { (key, sortedMapPerMonth) ->
+            var listPerDayWeekByMonth: ArrayList<PerDayWeekByMonth> = arrayListOf();
+            sortedMapPerMonth.forEach { (key, sortedMapPerDayWeek) ->
+                var listPerDayWeek: ArrayList<PerDayWeek> = arrayListOf();
+                sortedMapPerDayWeek.forEach { (key, dayWeek) ->
+                    listPerDayWeek.add(PerDayWeek(key.toString(), dayWeek));
+                }
+                var month = PerDayWeekByMonth(key.toString(), listPerDayWeek);
+                listPerDayWeekByMonth.add(month);
+            }
+            var perDayWeekByMonthAndYear = PerDayWeekByMonthAndYear(listPerDayWeekByMonth, key.toString());
+            listPerYear.add(perDayWeekByMonthAndYear);
+        }
+        return listPerYear;
     }
 }
