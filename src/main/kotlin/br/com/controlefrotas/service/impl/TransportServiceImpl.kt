@@ -1,7 +1,7 @@
 package br.com.controlefrotas.service.impl
 
 import br.com.controlefrotas.dto.*
-import br.com.controlefrotas.entities.Transport
+import br.com.controlefrotas.repository.ItineraryRepository
 import br.com.controlefrotas.repository.RegistrationDataRepository
 import br.com.controlefrotas.repository.TransportRepository
 import br.com.controlefrotas.service.TransportService
@@ -10,18 +10,43 @@ import java.time.*
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
 import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
 @Service
 class TransportServiceImpl(
     private val repository: TransportRepository,
-    private val repositoryRegistration: RegistrationDataRepository): TransportService {
+    private val repositoryRegistration: RegistrationDataRepository,
+    private val repositoryItinerary: ItineraryRepository): TransportService {
 
     val formatters: DateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     val SEM_VALOR = 0;
     val VALOR_INICIAL = 1;
 
-    override fun findByIdentificacao(identificacao: String): List<Transport> {
-        return repository.findByIdentificacao(identificacao);
+    override fun findByIdentificacao(identificacao: String): ArrayList<Itinerary> {
+        var listItineries: ArrayList<Itinerary> = arrayListOf();
+        var hashItinerary: HashMap<Integer, HashMap<String, ArrayList<String>>> = hashMapOf();
+        repositoryItinerary.findByIdentificacao(identificacao).itinerario.forEach { i ->
+            if(hashItinerary.containsKey(i.ordem)) {
+                var tempHashItinerary = hashItinerary.getValue(i.ordem);
+                var listRoutes: ArrayList<String> = arrayListOf();
+                listRoutes = tempHashItinerary.get(i.rota)!!;
+                listRoutes.add(i.horario);
+                tempHashItinerary.put(i.rota, listRoutes);
+                hashItinerary.put(i.ordem, tempHashItinerary);
+            } else {
+                var hashRoute: HashMap<String, ArrayList<String>> = hashMapOf();
+                hashRoute.put(i.rota, arrayListOf(i.horario));
+                hashItinerary.put(i.ordem, hashRoute);
+            }
+        }
+        hashItinerary.forEach { (key, value) ->
+            value.forEach { (keyRoute, valueRoute) ->
+                var itinerary = Itinerary(key, keyRoute, valueRoute);
+                listItineries.add(itinerary);
+            }
+        }
+        return listItineries;
     }
 
     override fun listPerDay(identificacao: String, dt: LocalDateTime): Int {
@@ -46,7 +71,7 @@ class TransportServiceImpl(
             }
             val dtEnd = LocalDate.now();
             beginDayNumber = dtBegin.dayOfYear.toLong();
-            endDayNumber = Duration.between(dtBegin, dtEnd).toDays();
+            endDayNumber = ChronoUnit.DAYS.between(dtBegin, dtEnd);
         } else {
             endDayNumber = Year.of(year).length().toLong();
         }
@@ -72,7 +97,9 @@ class TransportServiceImpl(
     }
 
     override fun listPerDayWeek(
-        identificacao: String
+        identificacao: String,
+        dtBegin: LocalDateTime,
+        dtEnd: LocalDateTime
     ): ArrayList<PerDayWeek> {
         val hashPerWeek : HashMap<Int, Int> = hashMapOf();
         hashPerWeek.put(DayOfWeek.MONDAY.value, SEM_VALOR);
@@ -82,10 +109,8 @@ class TransportServiceImpl(
         hashPerWeek.put(DayOfWeek.FRIDAY.value, SEM_VALOR);
         hashPerWeek.put(DayOfWeek.SATURDAY.value, SEM_VALOR);
         hashPerWeek.put(DayOfWeek.SUNDAY.value, SEM_VALOR);
-        val transport = this.repositoryRegistration.findByIdentificacao(identificacao);
-        val dtBegin = transport.dtInicioAtuacao;
-        val dtEnd = LocalDateTime.now();
-        repository.findByIdentificacaoAndDtAlteracaoBetween(identificacao, dtBegin, dtEnd).forEach {
+        val dtEndFormatted = dtEnd.withHour(23).withMinute(59).withSecond(59);
+        repository.findByIdentificacaoAndDtAlteracaoBetween(identificacao, dtBegin, dtEndFormatted).forEach {
             val nameWeekFormatted = it.dtAlteracao.dayOfWeek.value;
             if (hashPerWeek.containsKey(nameWeekFormatted)) {
                 val qtn: Int = hashPerWeek.getValue(nameWeekFormatted);
@@ -251,4 +276,23 @@ class TransportServiceImpl(
         }
         return listPerYear;
     }
+
+//    override fun listPerItinerary(identificacao: String, dtBegin: LocalDateTime, dtEnd: LocalDateTime): ArrayList<PerItinerary> {
+//        var listPerItinerary: ArrayList<PerItinerary> = arrayListOf();
+//        var hashPerItinerary: HashMap<Integer, HashMap<String, Integer>> = hashMapOf();
+//        val dtEndFormatted = dtEnd.withHour(23).withMinute(59).withSecond(59);
+//        repository.findByIdentificacaoAndDtAlteracaoBetween(identificacao, dtBegin, dtEndFormatted).forEach {
+//            if (hashPerItinerary.containsKey(it.idRota)) {
+//                val qtn: Int = hashPerWeek.getValue(nameWeekFormatted);
+//                hashPerWeek.put(nameWeekFormatted, qtn + VALOR_INICIAL);
+//            } else {
+//                hashPerItinerary.put(it, VALOR_INICIAL);
+//            }
+//        };
+//        var listPerDayWeek: ArrayList<PerDayWeek> = arrayListOf();
+//        hashPerWeek.toSortedMap().forEach { (key, value) ->
+//            var perDayInYear = PerDayWeek(key.toString(), value);
+//            listPerDayWeek.add(perDayInYear);
+//        }
+//    }
 }

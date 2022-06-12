@@ -17,5 +17,6 @@ data class Transport(
     val sentidoIda: String,
     val sentidoVolta: String,
     val identificacao: String,
-    val limite: Integer
+    val limite: Integer,
+    val idRota: Integer
 )

@@ -1,35 +1,31 @@
 package br.com.controlefrotas.controller
 
-import br.com.controlefrotas.dto.PerDayInYear
-import br.com.controlefrotas.dto.PerDayWeek
-import br.com.controlefrotas.dto.PerDayWeekByMonthAndYear
-import br.com.controlefrotas.dto.PerMonthByYear
-import br.com.controlefrotas.entities.Transport
+import br.com.controlefrotas.dto.*
 import br.com.controlefrotas.service.TransportService
 import org.springframework.format.annotation.DateTimeFormat
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
-import java.time.LocalDate
 import java.time.LocalDateTime
-import java.util.*
-import kotlin.collections.HashMap
 
 @RestController
 @RequestMapping("/transport")
 class TransportController(private val serviceTransport: TransportService) {
 
-    @GetMapping("/{identificacao}")
+    @CrossOrigin(origins = ["http://localhost:4200"])
+    @GetMapping("/{identificacao}/listar-itinerarios")
     fun getByIdentificacao(@PathVariable identificacao: String)
-            : ResponseEntity<List<Transport>>
+            : ResponseEntity<ArrayList<Itinerary>>
             = ResponseEntity.ok(serviceTransport.findByIdentificacao(identificacao));
 
     @CrossOrigin(origins = ["http://localhost:4200"])
     @GetMapping("/{identificacao}/listar-por-dia-semana")
     fun listPerWeekDay(
-        @PathVariable identificacao: String
+        @PathVariable identificacao: String,
+        @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) dtBegin: LocalDateTime,
+        @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) dtEnd: LocalDateTime
     )
             : ResponseEntity<ArrayList<PerDayWeek>>
-            = ResponseEntity.ok(serviceTransport.listPerDayWeek(identificacao));
+            = ResponseEntity.ok(serviceTransport.listPerDayWeek(identificacao, dtBegin, dtEnd));
 
     @CrossOrigin(origins = ["http://localhost:4200"])
     @GetMapping("/{identificacao}/listar-por-mes-divido-por-ano")
