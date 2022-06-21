@@ -12,10 +12,38 @@ import java.time.LocalDateTime
 class TransportController(private val serviceTransport: TransportService) {
 
     @CrossOrigin(origins = ["http://localhost:4200"])
+    @GetMapping("/gerar-massa")
+    fun gerarMassa(): ResponseEntity<Void> {
+        serviceTransport.gerarMassa();
+        return ResponseEntity.ok().build();
+    }
+
+    @CrossOrigin(origins = ["http://localhost:4200"])
     @GetMapping("/{identificacao}/listar-itinerarios")
-    fun getByIdentificacao(@PathVariable identificacao: String)
+    fun listPerItinerary(@PathVariable identificacao: String)
             : ResponseEntity<ArrayList<Itinerary>>
             = ResponseEntity.ok(serviceTransport.findByIdentificacao(identificacao));
+
+    @CrossOrigin(origins = ["http://localhost:4200"])
+    @GetMapping("/{identificacao}/listar-por-itinerario")
+    fun getByIdentificacao(
+        @PathVariable identificacao: String,
+        @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) dtBegin: LocalDateTime,
+        @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) dtEnd: LocalDateTime
+    )
+            : ResponseEntity<ArrayList<PerItinerary>>
+            = ResponseEntity.ok(serviceTransport.listPerItinerary(identificacao, dtBegin, dtEnd));
+
+    @CrossOrigin(origins = ["http://localhost:4200"])
+    @GetMapping("/{identificacao}/listar-por-itinerario-horario")
+    fun listPerHour(
+        @PathVariable identificacao: String,
+        @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) dtBegin: LocalDateTime,
+        @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) dtEnd: LocalDateTime
+    )
+            : ResponseEntity<ArrayList<PerHour>>
+            = ResponseEntity.ok(serviceTransport.listPerHour(identificacao, dtBegin, dtEnd));
+
 
     @CrossOrigin(origins = ["http://localhost:4200"])
     @GetMapping("/{identificacao}/listar-por-dia-semana")

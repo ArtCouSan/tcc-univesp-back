@@ -10,5 +10,9 @@ interface TransportService {
     fun listPerDayWeek(identificacao: String, dtBegin: LocalDateTime, dtEnd: LocalDateTime): ArrayList<PerDayWeek>;
     fun listPerMonthAndGroupedPerYear(identificacao: String): ArrayList<PerMonthByYear>;
     fun listPerDayWeekAndGroupedPerYearAndMonth(identificacao: String): ArrayList<PerDayWeekByMonthAndYear>;
-//    fun listPerItinerary(identificacao: String, dtBegin: LocalDateTime, dtEnd: LocalDateTime): ArrayList<PerItinerary>;
+    fun listPerItinerary(identificacao: String, dtBegin: LocalDateTime, dtEnd: LocalDateTime): ArrayList<PerItinerary>;
+    fun listPerHour(identificacao: String, dtBegin: LocalDateTime, dtEnd: LocalDateTime): ArrayList<PerHour>;
+
+    fun gerarMassa();
+
 }

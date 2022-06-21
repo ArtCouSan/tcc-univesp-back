@@ -7,8 +7,6 @@ import java.time.LocalDateTime
 
 @Document(collection = "onibus")
 data class Transport(
-    @Id
-    val _id: ObjectId = ObjectId.get(),
     val placa: String,
     val estaLotado: Boolean,
     val dtAlteracao: LocalDateTime,

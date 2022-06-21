@@ -1,6 +1,7 @@
 package br.com.controlefrotas.service.impl
 
 import br.com.controlefrotas.dto.*
+import br.com.controlefrotas.entities.Transport
 import br.com.controlefrotas.repository.ItineraryRepository
 import br.com.controlefrotas.repository.RegistrationDataRepository
 import br.com.controlefrotas.repository.TransportRepository
@@ -277,22 +278,608 @@ class TransportServiceImpl(
         return listPerYear;
     }
 
-//    override fun listPerItinerary(identificacao: String, dtBegin: LocalDateTime, dtEnd: LocalDateTime): ArrayList<PerItinerary> {
-//        var listPerItinerary: ArrayList<PerItinerary> = arrayListOf();
-//        var hashPerItinerary: HashMap<Integer, HashMap<String, Integer>> = hashMapOf();
-//        val dtEndFormatted = dtEnd.withHour(23).withMinute(59).withSecond(59);
-//        repository.findByIdentificacaoAndDtAlteracaoBetween(identificacao, dtBegin, dtEndFormatted).forEach {
-//            if (hashPerItinerary.containsKey(it.idRota)) {
-//                val qtn: Int = hashPerWeek.getValue(nameWeekFormatted);
-//                hashPerWeek.put(nameWeekFormatted, qtn + VALOR_INICIAL);
-//            } else {
-//                hashPerItinerary.put(it, VALOR_INICIAL);
-//            }
-//        };
-//        var listPerDayWeek: ArrayList<PerDayWeek> = arrayListOf();
-//        hashPerWeek.toSortedMap().forEach { (key, value) ->
-//            var perDayInYear = PerDayWeek(key.toString(), value);
-//            listPerDayWeek.add(perDayInYear);
-//        }
-//    }
+    override fun listPerItinerary(identificacao: String, dtBegin: LocalDateTime, dtEnd: LocalDateTime): ArrayList<PerItinerary> {
+        var listPerItinerary: ArrayList<PerItinerary> = arrayListOf();
+        val dtEndFormatted = dtEnd.withHour(23).withMinute(59).withSecond(59);
+        val itinerariesRegistration = repositoryRegistration
+            .findByIdentificacao(identificacao)
+            .itinerario;
+        val itineraries = repositoryItinerary
+            .findByIdentificacao(identificacao)
+            .itinerario;
+        itinerariesRegistration.forEach {
+            listPerItinerary.add(PerItinerary(it.ordem, it.rota, Integer(0)));
+        }
+        repository.findByIdentificacaoAndDtAlteracaoBetween(identificacao, dtBegin, dtEndFormatted).forEach {
+            val itineraryTemp = itineraries.filter { itinerary -> itinerary.idRota.equals(it.idRota) }.get(0);
+            listPerItinerary.forEach {
+               if(it.rota.equals(itineraryTemp.rota)) {
+                   it.qtn = Integer(Integer.sum(it.qtn.toInt(), 1));
+               }
+            };
+        };
+        return listPerItinerary;
+    }
+
+    override fun listPerHour(identificacao: String, dtBegin: LocalDateTime, dtEnd: LocalDateTime): ArrayList<PerHour> {
+        var listPerHour: ArrayList<PerHour> = arrayListOf();
+        val dtEndFormatted = dtEnd.withHour(23).withMinute(59).withSecond(59);
+        val itineraries = repositoryItinerary
+            .findByIdentificacao(identificacao)
+            .itinerario;
+        itineraries.forEach {
+            listPerHour.add(PerHour(it.horario, Integer(0)));
+        }
+        repository.findByIdentificacaoAndDtAlteracaoBetween(identificacao, dtBegin, dtEndFormatted).forEach {
+            val itineraryTemp = itineraries.filter { itinerary -> itinerary.idRota.equals(it.idRota) }.get(0);
+            listPerHour.forEach {
+                if(it.horario.equals(itineraryTemp.horario)) {
+                    it.qtn = Integer(Integer.sum(it.qtn.toInt(), 1));
+                }
+            };
+        };
+        return listPerHour;
+    }
+
+    override fun gerarMassa() {
+        this.repository.deleteAll();
+
+        var dth2020ComecoAulasPrimeiroSemestre = LocalDateTime.of(2020, Month.FEBRUARY, 2, 3,6,0);
+        var dth2020FimAulasPrimeiroSemestre = LocalDateTime.of(2020, Month.JUNE, 17, 3,6,0);
+        var dias2020AulasPrimeiroSemestre = Duration.between(dth2020ComecoAulasPrimeiroSemestre, dth2020FimAulasPrimeiroSemestre).toDays();
+
+        for(day: Long in 0..dias2020AulasPrimeiroSemestre) {
+            var dthAulas = dth2020ComecoAulasPrimeiroSemestre.plusDays(day);
+            if (dthAulas.getDayOfWeek() != DayOfWeek.SATURDAY
+                && dthAulas.getDayOfWeek() != DayOfWeek.SUNDAY) {
+
+                var dtTemp = dthAulas;
+
+                var listHours: ArrayList<Transport> = arrayListOf();
+                var t1 = Transport(
+                    "ACS124",
+                    true,
+                    dtTemp,
+                    "Ativo",
+                    "SP",
+                    "Terminal Jardim Ângela",
+                    "Terminal Santo Amaro",
+                    "737A-10",
+                    Integer(25),
+                    Integer(18)
+                );
+
+                var t2 = Transport(
+                    "ACS124",
+                    true,
+                    dtTemp.plusMinutes(5),
+                    "Ativo",
+                    "SP",
+                    "Terminal Jardim Ângela",
+                    "Terminal Santo Amaro",
+                    "737A-10",
+                    Integer(25),
+                    Integer(19)
+                );
+
+                var t3 = Transport(
+                    "ACS124",
+                    true,
+                    dtTemp.plusMinutes(5),
+                    "Ativo",
+                    "SP",
+                    "Terminal Jardim Ângela",
+                    "Terminal Santo Amaro",
+                    "737A-10",
+                    Integer(25),
+                    Integer(20)
+                );
+
+                var t4 = Transport(
+                    "ACS124",
+                    true,
+                    dtTemp.plusMinutes(5),
+                    "Ativo",
+                    "SP",
+                    "Terminal Jardim Ângela",
+                    "Terminal Santo Amaro",
+                    "737A-10",
+                    Integer(25),
+                    Integer(21)
+                );
+
+                var t5 = Transport(
+                    "ACS124",
+                    true,
+                    dtTemp.plusMinutes(5),
+                    "Ativo",
+                    "SP",
+                    "Terminal Jardim Ângela",
+                    "Terminal Santo Amaro",
+                    "737A-10",
+                    Integer(25),
+                    Integer(22)
+                );
+
+                var t6 = Transport(
+                    "ACS124",
+                    true,
+                    dtTemp.plusMinutes(5),
+                    "Ativo",
+                    "SP",
+                    "Terminal Jardim Ângela",
+                    "Terminal Santo Amaro",
+                    "737A-10",
+                    Integer(25),
+                    Integer(23)
+                );
+
+                var t7 = Transport(
+                    "ACS124",
+                    true,
+                    dtTemp.plusMinutes(5),
+                    "Ativo",
+                    "SP",
+                    "Terminal Jardim Ângela",
+                    "Terminal Santo Amaro",
+                    "737A-10",
+                    Integer(25),
+                    Integer(24)
+                )
+
+                var t8 = Transport(
+                    "ACS124",
+                    true,
+                    dtTemp.plusMinutes(5),
+                    "Ativo",
+                    "SP",
+                    "Terminal Jardim Ângela",
+                    "Terminal Santo Amaro",
+                    "737A-10",
+                    Integer(25),
+                    Integer(25)
+                );
+
+                var t9 = Transport(
+                    "ACS124",
+                    true,
+                    dtTemp.plusMinutes(5),
+                    "Ativo",
+                    "SP",
+                    "Terminal Jardim Ângela",
+                    "Terminal Santo Amaro",
+                    "737A-10",
+                    Integer(25),
+                    Integer(26)
+                );
+
+                var t10 = Transport(
+                    "ACS124",
+                    true,
+                    dtTemp.plusMinutes(5),
+                    "Ativo",
+                    "SP",
+                    "Terminal Jardim Ângela",
+                    "Terminal Santo Amaro",
+                    "737A-10",
+                    Integer(25),
+                    Integer(27)
+                );
+
+                var t11 = Transport(
+                    "ACS124",
+                    true,
+                    dtTemp.plusMinutes(5),
+                    "Ativo",
+                    "SP",
+                    "Terminal Jardim Ângela",
+                    "Terminal Santo Amaro",
+                    "737A-10",
+                    Integer(25),
+                    Integer(28)
+                );
+
+                var t12 = Transport(
+                    "ACS124",
+                    true,
+                    dtTemp.plusMinutes(5),
+                    "Ativo",
+                    "SP",
+                    "Terminal Jardim Ângela",
+                    "Terminal Santo Amaro",
+                    "737A-10",
+                    Integer(25),
+                    Integer(29)
+                );
+
+                listHours.add(t1);
+                listHours.add(t2);
+                listHours.add(t3);
+                listHours.add(t4);
+                listHours.add(t5);
+                listHours.add(t6);
+                listHours.add(t7);
+                listHours.add(t8);
+                listHours.add(t9);
+                listHours.add(t10);
+                listHours.add(t11);
+                listHours.add(t12);
+
+
+                this.repository.saveAll(listHours);
+            }
+        }
+
+        var dth2020ComecoAulasSegundoSemestre = LocalDateTime.of(2020, Month.JULY, 26, 3,6,0);
+        var dth2020FimAulasSegundoSemestre = LocalDateTime.of(2020, Month.DECEMBER, 23, 3,6,0);
+        var dias2020AulasSegundoSemestre = Duration.between(dth2020ComecoAulasSegundoSemestre, dth2020FimAulasSegundoSemestre).toDays();
+
+        for(day: Long in 0..dias2020AulasSegundoSemestre) {
+            var dthAulas = dth2020ComecoAulasSegundoSemestre.plusDays(day);
+            if (dthAulas.getDayOfWeek() != DayOfWeek.SATURDAY
+                && dthAulas.getDayOfWeek() != DayOfWeek.SUNDAY) {
+
+                var dtTemp = dthAulas;
+
+                var listHours: ArrayList<Transport> = arrayListOf();
+                var t1 = Transport(
+                    "ACS124",
+                    true,
+                    dtTemp,
+                    "Ativo",
+                    "SP",
+                    "Terminal Jardim Ângela",
+                    "Terminal Santo Amaro",
+                    "737A-10",
+                    Integer(25),
+                    Integer(18)
+                );
+
+                var t2 = Transport(
+                    "ACS124",
+                    true,
+                    dtTemp.plusMinutes(5),
+                    "Ativo",
+                    "SP",
+                    "Terminal Jardim Ângela",
+                    "Terminal Santo Amaro",
+                    "737A-10",
+                    Integer(25),
+                    Integer(19)
+                );
+
+                var t3 = Transport(
+                    "ACS124",
+                    true,
+                    dtTemp.plusMinutes(5),
+                    "Ativo",
+                    "SP",
+                    "Terminal Jardim Ângela",
+                    "Terminal Santo Amaro",
+                    "737A-10",
+                    Integer(25),
+                    Integer(20)
+                );
+
+                var t4 = Transport(
+                    "ACS124",
+                    true,
+                    dtTemp.plusMinutes(5),
+                    "Ativo",
+                    "SP",
+                    "Terminal Jardim Ângela",
+                    "Terminal Santo Amaro",
+                    "737A-10",
+                    Integer(25),
+                    Integer(21)
+                );
+
+                var t5 = Transport(
+                    "ACS124",
+                    true,
+                    dtTemp.plusMinutes(5),
+                    "Ativo",
+                    "SP",
+                    "Terminal Jardim Ângela",
+                    "Terminal Santo Amaro",
+                    "737A-10",
+                    Integer(25),
+                    Integer(22)
+                );
+
+                var t6 = Transport(
+                    "ACS124",
+                    true,
+                    dtTemp.plusMinutes(5),
+                    "Ativo",
+                    "SP",
+                    "Terminal Jardim Ângela",
+                    "Terminal Santo Amaro",
+                    "737A-10",
+                    Integer(25),
+                    Integer(23)
+                );
+
+                var t7 = Transport(
+                    "ACS124",
+                    true,
+                    dtTemp.plusMinutes(5),
+                    "Ativo",
+                    "SP",
+                    "Terminal Jardim Ângela",
+                    "Terminal Santo Amaro",
+                    "737A-10",
+                    Integer(25),
+                    Integer(24)
+                )
+
+                var t8 = Transport(
+                    "ACS124",
+                    true,
+                    dtTemp.plusMinutes(5),
+                    "Ativo",
+                    "SP",
+                    "Terminal Jardim Ângela",
+                    "Terminal Santo Amaro",
+                    "737A-10",
+                    Integer(25),
+                    Integer(25)
+                );
+
+                var t9 = Transport(
+                    "ACS124",
+                    true,
+                    dtTemp.plusMinutes(5),
+                    "Ativo",
+                    "SP",
+                    "Terminal Jardim Ângela",
+                    "Terminal Santo Amaro",
+                    "737A-10",
+                    Integer(25),
+                    Integer(26)
+                );
+
+                var t10 = Transport(
+                    "ACS124",
+                    true,
+                    dtTemp.plusMinutes(5),
+                    "Ativo",
+                    "SP",
+                    "Terminal Jardim Ângela",
+                    "Terminal Santo Amaro",
+                    "737A-10",
+                    Integer(25),
+                    Integer(27)
+                );
+
+                var t11 = Transport(
+                    "ACS124",
+                    true,
+                    dtTemp.plusMinutes(5),
+                    "Ativo",
+                    "SP",
+                    "Terminal Jardim Ângela",
+                    "Terminal Santo Amaro",
+                    "737A-10",
+                    Integer(25),
+                    Integer(28)
+                );
+
+                var t12 = Transport(
+                    "ACS124",
+                    true,
+                    dtTemp.plusMinutes(5),
+                    "Ativo",
+                    "SP",
+                    "Terminal Jardim Ângela",
+                    "Terminal Santo Amaro",
+                    "737A-10",
+                    Integer(25),
+                    Integer(29)
+                );
+
+                listHours.add(t1);
+                listHours.add(t2);
+                listHours.add(t3);
+                listHours.add(t4);
+                listHours.add(t5);
+                listHours.add(t6);
+                listHours.add(t7);
+                listHours.add(t8);
+                listHours.add(t9);
+                listHours.add(t10);
+                listHours.add(t11);
+                listHours.add(t12);
+
+                this.repository.saveAll(listHours);
+            }
+        }
+
+        var dth2022ComecoAulasPrimeiroSemestre = LocalDateTime.of(2022, Month.FEBRUARY, 2, 3,6,0);
+        var dth2022FimAulasPrimeiroSemestre = LocalDateTime.of(2022, Month.JUNE, 17, 3,6,0);
+        var dias2022AulasPrimeiroSemestre = Duration.between(dth2022ComecoAulasPrimeiroSemestre, dth2022FimAulasPrimeiroSemestre).toDays();
+
+        for(day: Long in 0..dias2022AulasPrimeiroSemestre) {
+            var dthAulas = dth2022ComecoAulasPrimeiroSemestre.plusDays(day);
+            if (dthAulas.getDayOfWeek() != DayOfWeek.SATURDAY
+                && dthAulas.getDayOfWeek() != DayOfWeek.SUNDAY) {
+
+                var dtTemp = dthAulas;
+
+                var listHours: ArrayList<Transport> = arrayListOf();
+                var t1 = Transport(
+                    "ACS124",
+                    true,
+                    dtTemp,
+                    "Ativo",
+                    "SP",
+                    "Terminal Jardim Ângela",
+                    "Terminal Santo Amaro",
+                    "737A-10",
+                    Integer(25),
+                    Integer(18)
+                );
+
+                var t2 = Transport(
+                    "ACS124",
+                    true,
+                    dtTemp.plusMinutes(5),
+                    "Ativo",
+                    "SP",
+                    "Terminal Jardim Ângela",
+                    "Terminal Santo Amaro",
+                    "737A-10",
+                    Integer(25),
+                    Integer(19)
+                );
+
+                var t3 = Transport(
+                    "ACS124",
+                    true,
+                    dtTemp.plusMinutes(5),
+                    "Ativo",
+                    "SP",
+                    "Terminal Jardim Ângela",
+                    "Terminal Santo Amaro",
+                    "737A-10",
+                    Integer(25),
+                    Integer(20)
+                );
+
+                var t4 = Transport(
+                    "ACS124",
+                    true,
+                    dtTemp.plusMinutes(5),
+                    "Ativo",
+                    "SP",
+                    "Terminal Jardim Ângela",
+                    "Terminal Santo Amaro",
+                    "737A-10",
+                    Integer(25),
+                    Integer(21)
+                );
+
+                var t5 = Transport(
+                    "ACS124",
+                    true,
+                    dtTemp.plusMinutes(5),
+                    "Ativo",
+                    "SP",
+                    "Terminal Jardim Ângela",
+                    "Terminal Santo Amaro",
+                    "737A-10",
+                    Integer(25),
+                    Integer(22)
+                );
+
+                var t6 = Transport(
+                    "ACS124",
+                    true,
+                    dtTemp.plusMinutes(5),
+                    "Ativo",
+                    "SP",
+                    "Terminal Jardim Ângela",
+                    "Terminal Santo Amaro",
+                    "737A-10",
+                    Integer(25),
+                    Integer(23)
+                );
+
+                var t7 = Transport(
+                    "ACS124",
+                    true,
+                    dtTemp.plusMinutes(5),
+                    "Ativo",
+                    "SP",
+                    "Terminal Jardim Ângela",
+                    "Terminal Santo Amaro",
+                    "737A-10",
+                    Integer(25),
+                    Integer(24)
+                )
+
+                var t8 = Transport(
+                    "ACS124",
+                    true,
+                    dtTemp.plusMinutes(5),
+                    "Ativo",
+                    "SP",
+                    "Terminal Jardim Ângela",
+                    "Terminal Santo Amaro",
+                    "737A-10",
+                    Integer(25),
+                    Integer(25)
+                );
+
+                var t9 = Transport(
+                    "ACS124",
+                    true,
+                    dtTemp.plusMinutes(5),
+                    "Ativo",
+                    "SP",
+                    "Terminal Jardim Ângela",
+                    "Terminal Santo Amaro",
+                    "737A-10",
+                    Integer(25),
+                    Integer(26)
+                );
+
+                var t10 = Transport(
+                    "ACS124",
+                    true,
+                    dtTemp.plusMinutes(5),
+                    "Ativo",
+                    "SP",
+                    "Terminal Jardim Ângela",
+                    "Terminal Santo Amaro",
+                    "737A-10",
+                    Integer(25),
+                    Integer(27)
+                );
+
+                var t11 = Transport(
+                    "ACS124",
+                    true,
+                    dtTemp.plusMinutes(5),
+                    "Ativo",
+                    "SP",
+                    "Terminal Jardim Ângela",
+                    "Terminal Santo Amaro",
+                    "737A-10",
+                    Integer(25),
+                    Integer(28)
+                );
+
+                var t12 = Transport(
+                    "ACS124",
+                    true,
+                    dtTemp.plusMinutes(5),
+                    "Ativo",
+                    "SP",
+                    "Terminal Jardim Ângela",
+                    "Terminal Santo Amaro",
+                    "737A-10",
+                    Integer(25),
+                    Integer(29)
+                );
+
+                listHours.add(t1);
+                listHours.add(t2);
+                listHours.add(t3);
+                listHours.add(t4);
+                listHours.add(t5);
+                listHours.add(t6);
+                listHours.add(t7);
+                listHours.add(t8);
+                listHours.add(t9);
+                listHours.add(t10);
+                listHours.add(t11);
+                listHours.add(t12);
+
+
+                this.repository.saveAll(listHours);
+            }
+        }
+
+    }
 }

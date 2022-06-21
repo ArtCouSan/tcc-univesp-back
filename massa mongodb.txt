@@ -1,0 +1,1276 @@
+// Dados Cadastrais
+
+{
+  "_id": {
+    "$oid": "6293e947ce84a436f40b5ce8"
+  },
+  "dtInicioAtuacao": "2020-01-01T01:59:12.462+00:00",
+  "identificacao": "737A-10",
+  "placa": "ACS124",
+  "itinerario": [
+    {
+      "rota": "Terminal Santo Amaro",
+      "horario": "",
+      "ordem": 1,
+      "idRota": 1
+    },
+    {
+      "rota": "Suzana Rodrigues - Plataforma Central",
+      "horario": "",
+      "ordem": 2,
+      "idRota": 2
+    },
+    {
+      "rota": "Parada 2 - Vitor Manzini C/B",
+      "horario": "",
+      "ordem": 3,
+      "idRota": 3
+    },
+    {
+      "rota": "Rua Periperi",
+      "horario": "",
+      "ordem": 4,
+      "idRota": 4
+    },
+    {
+      "rota": "Avenida Guarapiranga 702",
+      "horario": "",
+      "ordem": 5,
+      "idRota": 5
+    },
+    {
+      "rota": "Francisco Xavier C/B",
+      "horario": "",
+      "ordem": 6,
+      "idRota": 6
+    },
+    {
+      "rota": "Parada João De Abreu (C/B)",
+      "horario": "",
+      "ordem": 7,
+      "idRota": 7
+    },
+    {
+      "rota": "Parada Piraporinha C/B",
+      "horario": "",
+      "ordem": 8,
+      "idRota": 8
+    },
+    {
+      "rota": "Daniel Klein C/B",
+      "horario": "",
+      "ordem": 9,
+      "idRota": 9
+    },
+    {
+      "rota": "Estr. do M Boi Mirim, 1654",
+      "horario": "",
+      "ordem": 10,
+      "idRota": 10
+    },
+    {
+      "rota": "Roberto Selmi Dei C/B",
+      "horario": "05:30",
+      "ordem": 11,
+      "idRota": 11
+    },
+    {
+      "rota": "Lisandro Torres - C/B",
+      "horario": "",
+      "ordem": 12,
+      "idRota": 12
+    },
+    {
+      "rota": "Moreira da Silva C/B",
+      "horario": "",
+      "ordem": 13,
+      "idRota": 13
+    },
+    {
+      "rota": "Parada Mathias De Araujo C/B",
+      "horario": "",
+      "ordem": 14,
+      "idRota": 14
+    },
+    {
+      "rota": "Estr. do M Boi Mirim, 3636",
+      "horario": "",
+      "ordem": 15,
+      "idRota": 15
+    },
+    {
+      "rota": "Ernesto Pasqualucci C/B",
+      "horario": "",
+      "ordem": 16,
+      "idRota": 16
+    },
+    {
+      "rota": "Terminal Jardim Ângela",
+      "horario": "",
+      "ordem": 17,
+      "idRota": 17
+    }
+  ]
+}
+
+// Itinerarios
+{
+  "_id": {
+    "$oid": "62a5492c1621439d06893486"
+  },
+  "identificacao": "737A-10",
+  "placa": "ACS124",
+  "itinerario": [
+    {
+      "rota": "Terminal Santo Amaro",
+      "horario": "04:20",
+      "ordem": 1,
+      "idRota": 1
+    },
+    {
+      "rota": "Suzana Rodrigues - Plataforma Central",
+      "horario": "04:30",
+      "ordem": 2,
+      "idRota": 2
+    },
+    {
+      "rota": "Parada 2 - Vitor Manzini C/B",
+      "horario": "04:40",
+      "ordem": 3,
+      "idRota": 3
+    },
+    {
+      "rota": "Rua Periperi",
+      "horario": "04:50",
+      "ordem": 4,
+      "idRota": 4
+    },
+    {
+      "rota": "Avenida Guarapiranga 702",
+      "horario": "05:00",
+      "ordem": 5,
+      "idRota": 5
+    },
+    {
+      "rota": "Francisco Xavier C/B",
+      "horario": "05:05",
+      "ordem": 6,
+      "idRota": 6
+    },
+    {
+      "rota": "Parada João De Abreu (C/B)",
+      "horario": "05:10",
+      "ordem": 7,
+      "idRota": 7
+    },
+    {
+      "rota": "Parada Piraporinha C/B",
+      "horario": "05:15",
+      "ordem": 8,
+      "idRota": 8
+    },
+    {
+      "rota": "Daniel Klein C/B",
+      "horario": "05:20",
+      "ordem": 9,
+      "idRota": 9
+    },
+    {
+      "rota": "Estr. do M Boi Mirim, 1654",
+      "horario": "05:25",
+      "ordem": 10,
+      "idRota": 10
+    },
+    {
+      "rota": "Roberto Selmi Dei C/B",
+      "horario": "05:30",
+      "ordem": 11,
+      "idRota": 11
+    },
+    {
+      "rota": "Lisandro Torres - C/B",
+      "horario": "05:35",
+      "ordem": 12,
+      "idRota": 12
+    },
+    {
+      "rota": "Moreira da Silva C/B",
+      "horario": "05:40",
+      "ordem": 13,
+      "idRota": 13
+    },
+    {
+      "rota": "Parada Mathias De Araujo C/B",
+      "horario": "05:45",
+      "ordem": 14,
+      "idRota": 14
+    },
+    {
+      "rota": "Estr. do M Boi Mirim, 3636",
+      "horario": "05:50",
+      "ordem": 15,
+      "idRota": 15
+    },
+    {
+      "rota": "Ernesto Pasqualucci C/B",
+      "horario": "05:55",
+      "ordem": 16,
+      "idRota": 16
+    },
+    {
+      "rota": "Terminal Jardim Ângela",
+      "horario": "6:00",
+      "ordem": 17,
+      "idRota": 17
+    },
+    {
+      "rota": "Terminal Santo Amaro",
+      "horario": "06:04",
+      "ordem": 1,
+      "idRota": 18
+    },
+    {
+      "rota": "Suzana Rodrigues - Plataforma Central",
+      "horario": "06:08",
+      "ordem": 2,
+      "idRota": 19
+    },
+    {
+      "rota": "Parada 2 - Vitor Manzini C/B",
+      "horario": "06:12",
+      "ordem": 3,
+      "idRota": 20
+    },
+    {
+      "rota": "Rua Periperi",
+      "horario": "06:16",
+      "ordem": 4,
+      "idRota": 21
+    },
+    {
+      "rota": "Avenida Guarapiranga 702",
+      "horario": "06:20",
+      "ordem": 5,
+      "idRota": 22
+    },
+    {
+      "rota": "Francisco Xavier C/B",
+      "horario": "06:25",
+      "ordem": 6,
+      "idRota": 23
+    },
+    {
+      "rota": "Parada João De Abreu (C/B)",
+      "horario": "06:30",
+      "ordem": 7,
+      "idRota": 24
+    },
+    {
+      "rota": "Parada Piraporinha C/B",
+      "horario": "06:35",
+      "ordem": 8,
+      "idRota": 25
+    },
+    {
+      "rota": "Daniel Klein C/B",
+      "horario": "06:40",
+      "ordem": 9,
+      "idRota": 26
+    },
+    {
+      "rota": "Estr. do M Boi Mirim, 1654",
+      "horario": "06:45",
+      "ordem": 10,
+      "idRota": 27
+    },
+    {
+      "rota": "Roberto Selmi Dei C/B",
+      "horario": "06:50",
+      "ordem": 11,
+      "idRota": 28
+    },
+    {
+      "rota": "Lisandro Torres - C/B",
+      "horario": "06:55",
+      "ordem": 12,
+      "idRota": 29
+    },
+    {
+      "rota": "Moreira da Silva C/B",
+      "horario": "07:00",
+      "ordem": 13,
+      "idRota": 30
+    },
+    {
+      "rota": "Parada Mathias De Araujo C/B",
+      "horario": "07:04",
+      "ordem": 14,
+      "idRota": 31
+    },
+    {
+      "rota": "Estr. do M Boi Mirim, 3636",
+      "horario": "07:08",
+      "ordem": 15,
+      "idRota": 32
+    },
+    {
+      "rota": "Ernesto Pasqualucci C/B",
+      "horario": "07:12",
+      "ordem": 16,
+      "idRota": 33
+    },
+    {
+      "rota": "Terminal Jardim Ângela",
+      "horario": "07:16",
+      "ordem": 17,
+      "idRota": 34
+    },
+    {
+      "rota": "Terminal Santo Amaro",
+      "horario": "07:20",
+      "ordem": 1,
+      "idRota": 35
+    },
+    {
+      "rota": "Suzana Rodrigues - Plataforma Central",
+      "horario": "07:25",
+      "ordem": 2,
+      "idRota": 36
+    },
+    {
+      "rota": "Parada 2 - Vitor Manzini C/B",
+      "horario": "07:29",
+      "ordem": 3,
+      "idRota": 37
+    },
+    {
+      "rota": "Rua Periperi",
+      "horario": "07:33",
+      "ordem": 4,
+      "idRota": 38
+    },
+    {
+      "rota": "Avenida Guarapiranga 702",
+      "horario": "07:37",
+      "ordem": 5,
+      "idRota": 39
+    },
+    {
+      "rota": "Francisco Xavier C/B",
+      "horario": "07:41",
+      "ordem": 6,
+      "idRota": 40
+    },
+    {
+      "rota": "Parada João De Abreu (C/B)",
+      "horario": "07:45",
+      "ordem": 7,
+      "idRota": 41
+    },
+    {
+      "rota": "Parada Piraporinha C/B",
+      "horario": "07:49",
+      "ordem": 8,
+      "idRota": 42
+    },
+    {
+      "rota": "Daniel Klein C/B",
+      "horario": "07:53",
+      "ordem": 9,
+      "idRota": 43
+    },
+    {
+      "rota": "Estr. do M Boi Mirim, 1654",
+      "horario": "07:57",
+      "ordem": 10,
+      "idRota": 44
+    },
+    {
+      "rota": "Roberto Selmi Dei C/B",
+      "horario": "08:01",
+      "ordem": 11,
+      "idRota": 45
+    },
+    {
+      "rota": "Lisandro Torres - C/B",
+      "horario": "08:06",
+      "ordem": 12,
+      "idRota": 46
+    },
+    {
+      "rota": "Moreira da Silva C/B",
+      "horario": "08:11",
+      "ordem": 13,
+      "idRota": 47
+    },
+    {
+      "rota": "Parada Mathias De Araujo C/B",
+      "horario": "08:16",
+      "ordem": 14,
+      "idRota": 48
+    },
+    {
+      "rota": "Estr. do M Boi Mirim, 3636",
+      "horario": "08:21",
+      "ordem": 15,
+      "idRota": 49
+    },
+    {
+      "rota": "Ernesto Pasqualucci C/B",
+      "horario": "08:26",
+      "ordem": 16,
+      "idRota": 50
+    },
+    {
+      "rota": "Terminal Jardim Ângela",
+      "horario": "08:31",
+      "ordem": 17,
+      "idRota": 51
+    },
+    {
+      "rota": "Terminal Santo Amaro",
+      "horario": "08:36",
+      "ordem": 1,
+      "idRota": 52
+    },
+    {
+      "rota": "Suzana Rodrigues - Plataforma Central",
+      "horario": "08:40",
+      "ordem": 2,
+      "idRota": 53
+    },
+    {
+      "rota": "Parada 2 - Vitor Manzini C/B",
+      "horario": "08:44",
+      "ordem": 3,
+      "idRota": 54
+    },
+    {
+      "rota": "Rua Periperi",
+      "horario": "08:48",
+      "ordem": 4,
+      "idRota": 55
+    },
+    {
+      "rota": "Avenida Guarapiranga 702",
+      "horario": "08:52",
+      "ordem": 5,
+      "idRota": 56
+    },
+    {
+      "rota": "Francisco Xavier C/B",
+      "horario": "08:58",
+      "ordem": 6,
+      "idRota": 57
+    },
+    {
+      "rota": "Parada João De Abreu (C/B)",
+      "horario": "09:03",
+      "ordem": 7,
+      "idRota": 58
+    },
+    {
+      "rota": "Parada Piraporinha C/B",
+      "horario": "09:08",
+      "ordem": 8,
+      "idRota": 59
+    },
+    {
+      "rota": "Daniel Klein C/B",
+      "horario": "09:14",
+      "ordem": 9,
+      "idRota": 60
+    },
+    {
+      "rota": "Estr. do M Boi Mirim, 1654",
+      "horario": "09:20",
+      "ordem": 10,
+      "idRota": 61
+    },
+    {
+      "rota": "Roberto Selmi Dei C/B",
+      "horario": "09:28",
+      "ordem": 11,
+      "idRota": 62
+    },
+    {
+      "rota": "Lisandro Torres - C/B",
+      "horario": "09:36",
+      "ordem": 12,
+      "idRota": 63
+    },
+    {
+      "rota": "Moreira da Silva C/B",
+      "horario": "09:45",
+      "ordem": 13,
+      "idRota": 64
+    },
+    {
+      "rota": "Parada Mathias De Araujo C/B",
+      "horario": "09:54",
+      "ordem": 14,
+      "idRota": 65
+    },
+    {
+      "rota": "Estr. do M Boi Mirim, 3636",
+      "horario": "10:03",
+      "ordem": 15,
+      "idRota": 66
+    },
+    {
+      "rota": "Ernesto Pasqualucci C/B",
+      "horario": "10:12",
+      "ordem": 16,
+      "idRota": 67
+    },
+    {
+      "rota": "Terminal Jardim Ângela",
+      "horario": "10:21",
+      "ordem": 17,
+      "idRota": 68
+    },
+    {
+      "rota": "Terminal Santo Amaro",
+      "horario": "10:30",
+      "ordem": 1,
+      "idRota": 69
+    },
+    {
+      "rota": "Suzana Rodrigues - Plataforma Central",
+      "horario": "10:39",
+      "ordem": 2,
+      "idRota": 70
+    },
+    {
+      "rota": "Parada 2 - Vitor Manzini C/B",
+      "horario": "10:45",
+      "ordem": 3,
+      "idRota": 71
+    },
+    {
+      "rota": "Rua Periperi",
+      "horario": "10:51",
+      "ordem": 4,
+      "idRota": 72
+    },
+    {
+      "rota": "Avenida Guarapiranga 702",
+      "horario": "11:01",
+      "ordem": 5,
+      "idRota": 73
+    },
+    {
+      "rota": "Francisco Xavier C/B",
+      "horario": "11:11",
+      "ordem": 6,
+      "idRota": 74
+    },
+    {
+      "rota": "Parada João De Abreu (C/B)",
+      "horario": "11:21",
+      "ordem": 7,
+      "idRota": 75
+    },
+    {
+      "rota": "Parada Piraporinha C/B",
+      "horario": "11:31",
+      "ordem": 8,
+      "idRota": 76
+    },
+    {
+      "rota": "Daniel Klein C/B",
+      "horario": "11:43",
+      "ordem": 9,
+      "idRota": 77
+    },
+    {
+      "rota": "Estr. do M Boi Mirim, 1654",
+      "horario": "11:55",
+      "ordem": 10,
+      "idRota": 78
+    },
+    {
+      "rota": "Roberto Selmi Dei C/B",
+      "horario": "12:07",
+      "ordem": 11,
+      "idRota": 79
+    },
+    {
+      "rota": "Lisandro Torres - C/B",
+      "horario": "12:19",
+      "ordem": 12,
+      "idRota": 80
+    },
+    {
+      "rota": "Moreira da Silva C/B",
+      "horario": "12:31",
+      "ordem": 13,
+      "idRota": 81
+    },
+    {
+      "rota": "Parada Mathias De Araujo C/B",
+      "horario": "12:41",
+      "ordem": 14,
+      "idRota": 82
+    },
+    {
+      "rota": "Estr. do M Boi Mirim, 3636",
+      "horario": "12:51",
+      "ordem": 15,
+      "idRota": 83
+    },
+    {
+      "rota": "Ernesto Pasqualucci C/B",
+      "horario": "12:58",
+      "ordem": 16,
+      "idRota": 84
+    },
+    {
+      "rota": "Terminal Jardim Ângela",
+      "horario": "13:05",
+      "ordem": 17,
+      "idRota": 85
+    },
+    {
+      "rota": "Terminal Santo Amaro",
+      "horario": "13:13",
+      "ordem": 1,
+      "idRota": 86
+    },
+    {
+      "rota": "Suzana Rodrigues - Plataforma Central",
+      "horario": "13:21",
+      "ordem": 2,
+      "idRota": 87
+    },
+    {
+      "rota": "Parada 2 - Vitor Manzini C/B",
+      "horario": "13:29",
+      "ordem": 3,
+      "idRota": 88
+    },
+    {
+      "rota": "Rua Periperi",
+      "horario": "13:37",
+      "ordem": 4,
+      "idRota": 89
+    },
+    {
+      "rota": "Avenida Guarapiranga 702",
+      "horario": "13:44",
+      "ordem": 5,
+      "idRota": 90
+    },
+    {
+      "rota": "Francisco Xavier C/B",
+      "horario": "13:51",
+      "ordem": 6,
+      "idRota": 91
+    },
+    {
+      "rota": "Parada João De Abreu (C/B)",
+      "horario": "13:58",
+      "ordem": 7,
+      "idRota": 92
+    },
+    {
+      "rota": "Parada Piraporinha C/B",
+      "horario": "14:05",
+      "ordem": 8,
+      "idRota": 93
+    },
+    {
+      "rota": "Daniel Klein C/B",
+      "horario": "14:13",
+      "ordem": 9,
+      "idRota": 94
+    },
+    {
+      "rota": "Estr. do M Boi Mirim, 1654",
+      "horario": "14:21",
+      "ordem": 10,
+      "idRota": 95
+    },
+    {
+      "rota": "Roberto Selmi Dei C/B",
+      "horario": "14:27",
+      "ordem": 11,
+      "idRota": 96
+    },
+    {
+      "rota": "Lisandro Torres - C/B",
+      "horario": "14:35",
+      "ordem": 12,
+      "idRota": 97
+    },
+    {
+      "rota": "Moreira da Silva C/B",
+      "horario": "14:43",
+      "ordem": 13,
+      "idRota": 98
+    },
+    {
+      "rota": "Parada Mathias De Araujo C/B",
+      "horario": "14:49",
+      "ordem": 14,
+      "idRota": 99
+    },
+    {
+      "rota": "Estr. do M Boi Mirim, 3636",
+      "horario": "14:55",
+      "ordem": 15,
+      "idRota": 100
+    },
+    {
+      "rota": "Ernesto Pasqualucci C/B",
+      "horario": "15:01",
+      "ordem": 16,
+      "idRota": 101
+    },
+    {
+      "rota": "Terminal Jardim Ângela",
+      "horario": "15:07",
+      "ordem": 17,
+      "idRota": 102
+    },
+    {
+      "rota": "Terminal Santo Amaro",
+      "horario": "15:21",
+      "ordem": 1,
+      "idRota": 103
+    },
+    {
+      "rota": "Suzana Rodrigues - Plataforma Central",
+      "horario": "15:27",
+      "ordem": 2,
+      "idRota": 104
+    },
+    {
+      "rota": "Parada 2 - Vitor Manzini C/B",
+      "horario": "15:33",
+      "ordem": 3,
+      "idRota": 105
+    },
+    {
+      "rota": "Rua Periperi",
+      "horario": "15:41",
+      "ordem": 4,
+      "idRota": 106
+    },
+    {
+      "rota": "Avenida Guarapiranga 702",
+      "horario": "15:49",
+      "ordem": 5,
+      "idRota": 107
+    },
+    {
+      "rota": "Francisco Xavier C/B",
+      "horario": "15:57",
+      "ordem": 6,
+      "idRota": 108
+    },
+    {
+      "rota": "Parada João De Abreu (C/B)",
+      "horario": "16:05",
+      "ordem": 7,
+      "idRota": 109
+    },
+    {
+      "rota": "Parada Piraporinha C/B",
+      "horario": "16:13",
+      "ordem": 8,
+      "idRota": 110
+    },
+    {
+      "rota": "Daniel Klein C/B",
+      "horario": "16:21",
+      "ordem": 9,
+      "idRota": 111
+    },
+    {
+      "rota": "Estr. do M Boi Mirim, 1654",
+      "horario": "16:29",
+      "ordem": 10,
+      "idRota": 112
+    },
+    {
+      "rota": "Roberto Selmi Dei C/B",
+      "horario": "16:36",
+      "ordem": 11,
+      "idRota": 113
+    },
+    {
+      "rota": "Lisandro Torres - C/B",
+      "horario": "16:45",
+      "ordem": 12,
+      "idRota": 114
+    },
+    {
+      "rota": "Moreira da Silva C/B",
+      "horario": "16:54",
+      "ordem": 13,
+      "idRota": 115
+    },
+    {
+      "rota": "Parada Mathias De Araujo C/B",
+      "horario": "17:00",
+      "ordem": 14,
+      "idRota": 116
+    },
+    {
+      "rota": "Estr. do M Boi Mirim, 3636",
+      "horario": "17:05",
+      "ordem": 15,
+      "idRota": 117
+    },
+    {
+      "rota": "Ernesto Pasqualucci C/B",
+      "horario": "17:13",
+      "ordem": 16,
+      "idRota": 118
+    },
+    {
+      "rota": "Terminal Jardim Ângela",
+      "horario": "17:19",
+      "ordem": 17,
+      "idRota": 119
+    },
+    {
+      "rota": "Terminal Santo Amaro",
+      "horario": "17:26",
+      "ordem": 1,
+      "idRota": 120
+    },
+    {
+      "rota": "Suzana Rodrigues - Plataforma Central",
+      "horario": "17:32",
+      "ordem": 2,
+      "idRota": 121
+    },
+    {
+      "rota": "Parada 2 - Vitor Manzini C/B",
+      "horario": "17:40",
+      "ordem": 3,
+      "idRota": 122
+    },
+    {
+      "rota": "Rua Periperi",
+      "horario": "17:47",
+      "ordem": 4,
+      "idRota": 123
+    },
+    {
+      "rota": "Avenida Guarapiranga 702",
+      "horario": "17:52",
+      "ordem": 5,
+      "idRota": 124
+    },
+    {
+      "rota": "Francisco Xavier C/B",
+      "horario": "18:00",
+      "ordem": 6,
+      "idRota": 125
+    },
+    {
+      "rota": "Parada João De Abreu (C/B)",
+      "horario": "18:06",
+      "ordem": 7,
+      "idRota": 126
+    },
+    {
+      "rota": "Parada Piraporinha C/B",
+      "horario": "18:12",
+      "ordem": 8,
+      "idRota": 127
+    },
+    {
+      "rota": "Daniel Klein C/B",
+      "horario": "18:18",
+      "ordem": 9,
+      "idRota": 128
+    },
+    {
+      "rota": "Estr. do M Boi Mirim, 1654",
+      "horario": "18:24",
+      "ordem": 10,
+      "idRota": 129
+    },
+    {
+      "rota": "Roberto Selmi Dei C/B",
+      "horario": "18:30",
+      "ordem": 11,
+      "idRota": 130
+    },
+    {
+      "rota": "Lisandro Torres - C/B",
+      "horario": "18:36",
+      "ordem": 12,
+      "idRota": 131
+    },
+    {
+      "rota": "Moreira da Silva C/B",
+      "horario": "18:42",
+      "ordem": 13,
+      "idRota": 132
+    },
+    {
+      "rota": "Parada Mathias De Araujo C/B",
+      "horario": "18:47",
+      "ordem": 14,
+      "idRota": 133
+    },
+    {
+      "rota": "Estr. do M Boi Mirim, 3636",
+      "horario": "18:54",
+      "ordem": 15,
+      "idRota": 134
+    },
+    {
+      "rota": "Ernesto Pasqualucci C/B",
+      "horario": "19:01",
+      "ordem": 16,
+      "idRota": 135
+    },
+    {
+      "rota": "Terminal Jardim Ângela",
+      "horario": "19:07",
+      "ordem": 17,
+      "idRota": 136
+    },
+    {
+      "rota": "Terminal Santo Amaro",
+      "horario": "19:13",
+      "ordem": 1,
+      "idRota": 137
+    },
+    {
+      "rota": "Suzana Rodrigues - Plataforma Central",
+      "horario": "19:19",
+      "ordem": 2,
+      "idRota": 138
+    },
+    {
+      "rota": "Parada 2 - Vitor Manzini C/B",
+      "horario": "19:27",
+      "ordem": 3,
+      "idRota": 139
+    },
+    {
+      "rota": "Rua Periperi",
+      "horario": "19:35",
+      "ordem": 4,
+      "idRota": 140
+    },
+    {
+      "rota": "Avenida Guarapiranga 702",
+      "horario": "19:43",
+      "ordem": 5,
+      "idRota": 141
+    },
+    {
+      "rota": "Francisco Xavier C/B",
+      "horario": "19:50",
+      "ordem": 6,
+      "idRota": 142
+    },
+    {
+      "rota": "Parada João De Abreu (C/B)",
+      "horario": "19:57",
+      "ordem": 7,
+      "idRota": 143
+    },
+    {
+      "rota": "Parada Piraporinha C/B",
+      "horario": "20:03",
+      "ordem": 8,
+      "idRota": 144
+    },
+    {
+      "rota": "Daniel Klein C/B",
+      "horario": "20:09",
+      "ordem": 9,
+      "idRota": 145
+    },
+    {
+      "rota": "Estr. do M Boi Mirim, 1654",
+      "horario": "20:15",
+      "ordem": 10,
+      "idRota": 146
+    },
+    {
+      "rota": "Roberto Selmi Dei C/B",
+      "horario": "20:21",
+      "ordem": 11,
+      "idRota": 147
+    },
+    {
+      "rota": "Lisandro Torres - C/B",
+      "horario": "20:29",
+      "ordem": 12,
+      "idRota": 148
+    },
+    {
+      "rota": "Moreira da Silva C/B",
+      "horario": "20:37",
+      "ordem": 13,
+      "idRota": 149
+    },
+    {
+      "rota": "Parada Mathias De Araujo C/B",
+      "horario": "20:47",
+      "ordem": 14,
+      "idRota": 150
+    },
+    {
+      "rota": "Estr. do M Boi Mirim, 3636",
+      "horario": "20:57",
+      "ordem": 15,
+      "idRota": 151
+    },
+    {
+      "rota": "Ernesto Pasqualucci C/B",
+      "horario": "21:07",
+      "ordem": 16,
+      "idRota": 152
+    },
+    {
+      "rota": "Terminal Jardim Ângela",
+      "horario": "21:17",
+      "ordem": 17,
+      "idRota": 153
+    },
+    {
+      "rota": "Terminal Santo Amaro",
+      "horario": "21:32",
+      "ordem": 1,
+      "idRota": 154
+    },
+    {
+      "rota": "Suzana Rodrigues - Plataforma Central",
+      "horario": "21:47",
+      "ordem": 2,
+      "idRota": 155
+    },
+    {
+      "rota": "Parada 2 - Vitor Manzini C/B",
+      "horario": "22:02",
+      "ordem": 3,
+      "idRota": 156
+    },
+    {
+      "rota": "Rua Periperi",
+      "horario": "22:17",
+      "ordem": 4,
+      "idRota": 157
+    },
+    {
+      "rota": "Avenida Guarapiranga 702",
+      "horario": "22:32",
+      "ordem": 5,
+      "idRota": 158
+    },
+    {
+      "rota": "Francisco Xavier C/B",
+      "horario": "22:47",
+      "ordem": 6,
+      "idRota": 159
+    },
+    {
+      "rota": "Parada João De Abreu (C/B)",
+      "horario": "23:07",
+      "ordem": 7,
+      "idRota": 160
+    },
+    {
+      "rota": "Parada Piraporinha C/B",
+      "horario": "23:27",
+      "ordem": 8,
+      "idRota": 161
+    },
+    {
+      "rota": "Daniel Klein C/B",
+      "horario": "23:45",
+      "ordem": 9,
+      "idRota": 162
+    },
+    {
+      "rota": "Estr. do M Boi Mirim, 1654",
+      "horario": "23:53",
+      "ordem": 10,
+      "idRota": 163
+    },
+    {
+      "rota": "Roberto Selmi Dei C/B",
+      "horario": "00:01",
+      "ordem": 11,
+      "idRota": 164
+    },
+    {
+      "rota": "Lisandro Torres - C/B",
+      "horario": "00:09",
+      "ordem": 12,
+      "idRota": 165
+    },
+    {
+      "rota": "Moreira da Silva C/B",
+      "horario": "00:18",
+      "ordem": 13,
+      "idRota": 166
+    },
+    {
+      "rota": "Parada Mathias De Araujo C/B",
+      "horario": "00:27",
+      "ordem": 14,
+      "idRota": 167
+    },
+    {
+      "rota": "Estr. do M Boi Mirim, 3636",
+      "horario": "00:36",
+      "ordem": 15,
+      "idRota": 168
+    },
+    {
+      "rota": "Ernesto Pasqualucci C/B",
+      "horario": "00:45",
+      "ordem": 16,
+      "idRota": 169
+    },
+    {
+      "rota": "Terminal Jardim Ângela",
+      "horario": "00:54",
+      "ordem": 17,
+      "idRota": 170
+    }
+  ]
+}
+
+// Transporte
+{
+  "placa": "ACS124",
+  "estaLotado": true,
+  "dtAlteracao": "2020-02-07 06:00:00",
+  "status": "Ativo",
+  "uf": "SP",
+  "sentidoIda": "Terminal Jardim Ângela",
+  "sentidoVolta": "Terminal Santo Amaro",
+  "identificacao": "737A-10",
+  "limite": 25,
+  "idRota": 1
+}
+
+{
+  "placa": "ACS124",
+  "estaLotado": true,
+  "dtAlteracao": "2020-02-07 06:00:00",
+  "status": "Ativo",
+  "uf": "SP",
+  "sentidoIda": "Terminal Jardim Ângela",
+  "sentidoVolta": "Terminal Santo Amaro",
+  "identificacao": "737A-10",
+  "limite": 25,
+  "idRota": 2
+}
+
+{
+  "placa": "ACS124",
+  "estaLotado": true,
+  "dtAlteracao": "2020-02-07 06:00:00",
+  "status": "Ativo",
+  "uf": "SP",
+  "sentidoIda": "Terminal Jardim Ângela",
+  "sentidoVolta": "Terminal Santo Amaro",
+  "identificacao": "737A-10",
+  "limite": 25,
+  "idRota": 3
+}
+
+{
+  "placa": "ACS124",
+  "estaLotado": true,
+  "dtAlteracao": "2020-02-07 06:00:00",
+  "status": "Ativo",
+  "uf": "SP",
+  "sentidoIda": "Terminal Jardim Ângela",
+  "sentidoVolta": "Terminal Santo Amaro",
+  "identificacao": "737A-10",
+  "limite": 25,
+  "idRota": 4
+}
+
+{
+  "placa": "ACS124",
+  "estaLotado": true,
+  "dtAlteracao": "2020-02-07 06:00:00",
+  "status": "Ativo",
+  "uf": "SP",
+  "sentidoIda": "Terminal Jardim Ângela",
+  "sentidoVolta": "Terminal Santo Amaro",
+  "identificacao": "737A-10",
+  "limite": 25,
+  "idRota": 5
+}
+
+{
+  "placa": "ACS124",
+  "estaLotado": true,
+  "dtAlteracao": "2020-02-07 06:00:00",
+  "status": "Ativo",
+  "uf": "SP",
+  "sentidoIda": "Terminal Jardim Ângela",
+  "sentidoVolta": "Terminal Santo Amaro",
+  "identificacao": "737A-10",
+  "limite": 25,
+  "idRota": 6
+}
+
+{
+  "placa": "ACS124",
+  "estaLotado": true,
+  "dtAlteracao": "2020-02-07 06:00:00",
+  "status": "Ativo",
+  "uf": "SP",
+  "sentidoIda": "Terminal Jardim Ângela",
+  "sentidoVolta": "Terminal Santo Amaro",
+  "identificacao": "737A-10",
+  "limite": 25,
+  "idRota": 7
+}
+
+{
+  "placa": "ACS124",
+  "estaLotado": true,
+  "dtAlteracao": "2020-02-07 06:00:00",
+  "status": "Ativo",
+  "uf": "SP",
+  "sentidoIda": "Terminal Jardim Ângela",
+  "sentidoVolta": "Terminal Santo Amaro",
+  "identificacao": "737A-10",
+  "limite": 25,
+  "idRota": 8
+}
+
+{
+  "placa": "ACS124",
+  "estaLotado": true,
+  "dtAlteracao": "2020-02-07 06:00:00",
+  "status": "Ativo",
+  "uf": "SP",
+  "sentidoIda": "Terminal Jardim Ângela",
+  "sentidoVolta": "Terminal Santo Amaro",
+  "identificacao": "737A-10",
+  "limite": 25,
+  "idRota": 9
+}
+
+{
+  "placa": "ACS124",
+  "estaLotado": true,
+  "dtAlteracao": "2020-02-07 06:00:00",
+  "status": "Ativo",
+  "uf": "SP",
+  "sentidoIda": "Terminal Jardim Ângela",
+  "sentidoVolta": "Terminal Santo Amaro",
+  "identificacao": "737A-10",
+  "limite": 25,
+  "idRota": 10
+}
